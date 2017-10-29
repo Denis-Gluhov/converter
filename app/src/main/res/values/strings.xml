@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Конвертер валют</string>
+
+    <string name="text_currency">Валюты</string>
+    <string name="text_converter">Конвертер</string>
+    <string name="text_source_currency">Исходная валюта</string>
+    <string name="text_final_currency">Конечная валюта</string>
+    <string name="toast_conn_error">Ошибка подключения к серверу, данные загружены из кеша</string>
+    <string name="toast_enter_currency">Необходимо указать сумму исходной валюты</string>
+    <string name="text_dialog_load">Загрузка…</string>
+    <string name="text_sum_source_currency">Сумма исходной валюты</string>
+    <string name="text_sum_final_currency">Сумма в конечной валюте</string>
+    <string name="text_result">0.0</string>
+    <string name="text_ok">ОК</string>
+
+    <string name="card_name_currency">Наименование валюты</string>
+    <string name="card_nominal_currency">Номинал валюты</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="tabIndicatorHeight">2dp</dimen>
+    <dimen name="layout_margin">8dp</dimen>
+    <dimen name="layout_marginTop">3dp</dimen>
+    <dimen name="layout_marginBottom">2dp</dimen>
+    <dimen name="layout_height">120dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="margin_custom_item">5dp</dimen>
+
+    <dimen name="text_size_name_currency">20sp</dimen>
+    <dimen name="text_size_full_text_currency">18sp</dimen>
+    <dimen name="text_size_final_text">16sp</dimen>
+
+    <dimen name="marginBottom_name_currency">5dp</dimen>
+
+</resources>
