@@ -1,10 +1,8 @@
 package ru.sbertech.currencyconvert.screens.list.presenter;
 
-import java.util.List;
-
-import ru.sbertech.currencyconvert.model.Currency;
+/**
+ * Created by Developer on 10/31/2017.
+ */
 
 public interface IListPresenter {
-    void setData(List<Currency> data);
-    void onRefreshData();
 }
