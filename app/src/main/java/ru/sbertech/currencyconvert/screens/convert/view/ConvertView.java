@@ -19,13 +19,13 @@ import java.util.List;
 import ru.sbertech.currencyconvert.R;
 import ru.sbertech.currencyconvert.TabFragment;
 import ru.sbertech.currencyconvert.model.Currency;
-import ru.sbertech.currencyconvert.presenter.IPresenter;
-import ru.sbertech.currencyconvert.presenter.Presenter;
+import ru.sbertech.currencyconvert.screens.convert.presenter.ConvertPresenter;
+import ru.sbertech.currencyconvert.screens.convert.presenter.IConvertPresenter;
 
 public class ConvertView extends TabFragment implements IConvertView {
 
     private CustomSpinnerAdapter adapter;
-    private IPresenter presenter;
+    private IConvertPresenter presenter;
     private EditText editText;
     private TextView textView;
 
@@ -43,7 +43,7 @@ public class ConvertView extends TabFragment implements IConvertView {
         view = inflater.inflate(R.layout.fragment_convert_currency, container, false);
         adapter = new CustomSpinnerAdapter(getActivity());
 
-        presenter = new Presenter(this);
+        presenter = new ConvertPresenter(this);
 
         initSpinner();
 
@@ -53,7 +53,7 @@ public class ConvertView extends TabFragment implements IConvertView {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.setValueBaseCurrency(editText.getText().toString());
             }
         });
         return view;
@@ -70,7 +70,7 @@ public class ConvertView extends TabFragment implements IConvertView {
         sourceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                presenter.setValueSource(data.get(position).getValue());
+                presenter.setBaseCurrency(position);
             }
 
             @Override
@@ -84,8 +84,7 @@ public class ConvertView extends TabFragment implements IConvertView {
         finalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                presenter.setValueFinal(data.get(position).getValue());
-//                presenter.setNominal(data.get(position).getNominal());
+                presenter.setFinalCurrency(position);
             }
 
             @Override

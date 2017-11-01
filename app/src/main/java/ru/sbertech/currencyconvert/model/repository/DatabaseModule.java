@@ -49,7 +49,7 @@ public class DatabaseModule extends SQLiteOpenHelper implements IDatabaseModule 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF IT EXISTS " + TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE);
         onCreate(db);
     }
 

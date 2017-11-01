@@ -1,5 +1,7 @@
 package ru.sbertech.currencyconvert.screens.list.presenter;
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
 import ru.sbertech.currencyconvert.model.Currency;
@@ -20,13 +22,12 @@ public class ListPresenter implements IListPresenter {
     }
 
     @Override
-    public void setData(List<Currency> data) {
+    public void setData(@NonNull List<Currency> data) {
         listView.dismissProgressDialog();
         listView.dismissRefreshing();
         listView.refreshData(data);
     }
 
-    @Override
     public void onRefreshData() {
         listInteractor.loadData();
     }
