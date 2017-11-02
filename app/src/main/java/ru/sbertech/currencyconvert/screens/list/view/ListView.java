@@ -39,7 +39,7 @@ public class ListView extends TabFragment implements IListView {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        presenter = new ListPresenter(this);
+
     }
 
     @Nullable
@@ -58,6 +58,7 @@ public class ListView extends TabFragment implements IListView {
                 presenter.onRefreshData();
             }
         });
+        presenter = new ListPresenter(this);
         return view;
     }
 
