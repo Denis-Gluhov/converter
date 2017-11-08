@@ -3,22 +3,21 @@ package ru.sbertech.currencyconvert.screens.list.interactor;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.model.Currency;
-import ru.sbertech.currencyconvert.model.repository.DatabaseModule;
-import ru.sbertech.currencyconvert.model.repository.IDatabaseModule;
-import ru.sbertech.currencyconvert.model.repository.INetworkModule;
-import ru.sbertech.currencyconvert.model.repository.NetworkModule;
+import ru.sbertech.currencyconvert.model.repository.ContractRepository;
+import ru.sbertech.currencyconvert.model.repository.Database;
+import ru.sbertech.currencyconvert.model.repository.Network;
 import ru.sbertech.currencyconvert.screens.list.presenter.IListPresenter;
 
-public class ListInteractor implements IListInteractor, INetworkModule.OnLoadDataListener {
+public class ListInteractor implements IListInteractor, ContractRepository.OnLoadDataListener {
 
     private IListPresenter listPresenter;
-    private IDatabaseModule databaseModule;
-    private INetworkModule networkModule;
+    private ContractRepository.Database databaseModule;
+    private ContractRepository.Network networkModule;
 
     public ListInteractor(IListPresenter listPresenter) {
         this.listPresenter = listPresenter;
-        databaseModule = new DatabaseModule();
-        networkModule = new NetworkModule();
+        databaseModule = new Database();
+        networkModule = new Network();
     }
 
     @Override

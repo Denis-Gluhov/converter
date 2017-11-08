@@ -10,7 +10,7 @@ import java.util.List;
 import ru.sbertech.currencyconvert.App;
 import ru.sbertech.currencyconvert.model.Currency;
 
-public class DatabaseModule extends SQLiteOpenHelper implements IDatabaseModule {
+public class Database extends SQLiteOpenHelper implements ContractRepository.Database {
 
     private static final String DATABASE_NAME = "currency";
     private static final int DATABASE_VERSION = 1;
@@ -37,7 +37,7 @@ public class DatabaseModule extends SQLiteOpenHelper implements IDatabaseModule 
 
     private SQLiteDatabase liteDatabase;
 
-    public DatabaseModule() {
+    public Database() {
         super(App.APP_CONTEXT, DATABASE_NAME, null, DATABASE_VERSION);
         liteDatabase = this.getWritableDatabase();
     }

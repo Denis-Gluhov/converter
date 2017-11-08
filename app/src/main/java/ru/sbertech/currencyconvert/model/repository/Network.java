@@ -19,14 +19,14 @@ import javax.xml.parsers.SAXParserFactory;
 import ru.sbertech.currencyconvert.model.Currency;
 import ru.sbertech.currencyconvert.utils.SAXHandler;
 
-public class NetworkModule implements INetworkModule {
+public class Network implements ContractRepository.Network {
     private final static String ENCODING = "windows-1251";
     private static final String URL = "http://www.cbr.ru/scripts/XML_daily.asp";
 
-    private OnLoadDataListener listener;
+    private ContractRepository.OnLoadDataListener listener;
 
     @Override
-    public void onLoadData(OnLoadDataListener listener) {
+    public void onLoadData(ContractRepository.OnLoadDataListener listener) {
         this.listener = listener;
         new Load().execute();
     }

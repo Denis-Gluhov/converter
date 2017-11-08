@@ -5,14 +5,14 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.model.Currency;
-import ru.sbertech.currencyconvert.model.repository.DatabaseModule;
-import ru.sbertech.currencyconvert.model.repository.IDatabaseModule;
+import ru.sbertech.currencyconvert.model.repository.ContractRepository;
+import ru.sbertech.currencyconvert.model.repository.Database;
 import ru.sbertech.currencyconvert.screens.convert.view.IConvertView;
 
 public class ConvertPresenter implements IConvertPresenter {
 
     private IConvertView convertView;
-    private IDatabaseModule databaseModule;
+    private ContractRepository.Database databaseModule;
 
     private List<Currency> data;
 
@@ -21,7 +21,7 @@ public class ConvertPresenter implements IConvertPresenter {
 
     public ConvertPresenter(IConvertView convertView) {
         this.convertView = convertView;
-        databaseModule = new DatabaseModule();
+        databaseModule = new Database();
         data = databaseModule.getAll();
         convertView.refreshData(data);
     }
@@ -43,6 +43,9 @@ public class ConvertPresenter implements IConvertPresenter {
 
     @Override
     public void setValueBaseCurrency(String value) {
-        convertView.setResult(String.valueOf(round(baseValue * Double.valueOf(value) / finalValue)));
+        if (value.length() > 0)
+            convertView.setResult(String.valueOf(round(baseValue * Double.valueOf(value) / finalValue)));
+        else
+            convertView.showMessage("Error!");
     }
 }
