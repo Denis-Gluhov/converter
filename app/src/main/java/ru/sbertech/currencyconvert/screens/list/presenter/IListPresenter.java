@@ -4,9 +4,9 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import ru.sbertech.currencyconvert.model.Currency;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 
 public interface IListPresenter {
-    void setData(@NonNull List<Currency> data);
+    void setData(@NonNull List<CurrencyOld> data);
     void onRefreshData();
 }

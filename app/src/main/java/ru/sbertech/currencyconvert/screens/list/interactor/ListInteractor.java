@@ -2,10 +2,7 @@ package ru.sbertech.currencyconvert.screens.list.interactor;
 
 import java.util.List;
 
-import ru.sbertech.currencyconvert.model.Currency;
-import ru.sbertech.currencyconvert.model.repository.ContractRepository;
-import ru.sbertech.currencyconvert.model.repository.Database;
-import ru.sbertech.currencyconvert.model.repository.Network;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 import ru.sbertech.currencyconvert.screens.list.presenter.IListPresenter;
 
 public class ListInteractor implements IListInteractor, ContractRepository.OnLoadDataListener {
@@ -26,7 +23,7 @@ public class ListInteractor implements IListInteractor, ContractRepository.OnLoa
     }
 
     @Override
-    public void onSuccess(List<Currency> data) {
+    public void onSuccess(List<CurrencyOld> data) {
         databaseModule.clear();
         databaseModule.add(data);
         listPresenter.setData(data);

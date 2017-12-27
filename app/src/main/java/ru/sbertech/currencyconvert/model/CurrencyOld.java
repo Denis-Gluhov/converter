@@ -1,6 +1,6 @@
 package ru.sbertech.currencyconvert.model;
 
-public class Currency {
+public class CurrencyOld {
 
     private String numCode;
     private String charCode;
@@ -8,7 +8,7 @@ public class Currency {
     private String name;
     private double value;
 
-    public Currency(String numCode, String charCode, int nominal, String name, double value) {
+    public CurrencyOld(String numCode, String charCode, int nominal, String name, double value) {
         this.numCode = numCode;
         this.charCode = charCode;
         this.nominal = nominal;
@@ -16,7 +16,7 @@ public class Currency {
         this.value = value;
     }
 
-    public Currency() {
+    public CurrencyOld() {
     }
 
     public String getNumCode() {

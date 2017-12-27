@@ -16,7 +16,7 @@ import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
 import ru.sbertech.currencyconvert.TabFragment;
-import ru.sbertech.currencyconvert.model.Currency;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 import ru.sbertech.currencyconvert.screens.list.presenter.IListPresenter;
 import ru.sbertech.currencyconvert.screens.list.presenter.ListPresenter;
 
@@ -83,7 +83,7 @@ public class ListView extends TabFragment implements IListView {
     }
 
     @Override
-    public void refreshData(@NonNull List<Currency> data) {
+    public void refreshData(@NonNull List<CurrencyOld> data) {
         adapter.setData(data);
         adapter.notifyDataSetChanged();
     }

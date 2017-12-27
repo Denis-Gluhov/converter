@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import ru.sbertech.currencyconvert.model.Currency;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 import ru.sbertech.currencyconvert.screens.list.interactor.IListInteractor;
 import ru.sbertech.currencyconvert.screens.list.interactor.ListInteractor;
 import ru.sbertech.currencyconvert.screens.list.view.IListView;
@@ -22,7 +22,7 @@ public class ListPresenter implements IListPresenter {
     }
 
     @Override
-    public void setData(@NonNull List<Currency> data) {
+    public void setData(@NonNull List<CurrencyOld> data) {
         listView.dismissProgressDialog();
         listView.dismissRefreshing();
         listView.refreshData(data);

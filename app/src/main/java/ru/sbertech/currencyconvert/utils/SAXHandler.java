@@ -6,7 +6,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 
-import ru.sbertech.currencyconvert.model.Currency;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 
 public class SAXHandler extends DefaultHandler {
 
@@ -17,8 +17,8 @@ public class SAXHandler extends DefaultHandler {
     private static final String NAME = "Name";
     private static final String VALUE = "Value";
 
-    private ArrayList<Currency> currencies;
-    private Currency currency;
+    private ArrayList<CurrencyOld> currencies;
+    private CurrencyOld currencyOld;
     private boolean numCodeTag, charCodeTag, nominalTag, nameTag, valueTag;
 
     @Override
@@ -29,7 +29,7 @@ public class SAXHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (VALUTE.equals(qName)){
-            currency = new Currency();
+            currencyOld = new CurrencyOld();
         }
         numCodeTag = NUM_CODE.equals(qName);
         charCodeTag = CHAR_CODE.equals(qName);
@@ -41,7 +41,7 @@ public class SAXHandler extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (!numCodeTag && !charCodeTag && !nominalTag && !nameTag && !valueTag){
-            currencies.add(currency);
+            currencies.add(currencyOld);
         }
         numCodeTag = false;
         charCodeTag = false;
@@ -53,16 +53,16 @@ public class SAXHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         if (numCodeTag){
-            currency.setNumCode(new String(ch, start, length));
+            currencyOld.setNumCode(new String(ch, start, length));
         } else if (charCodeTag){
-            currency.setCharCode(new String(ch, start, length));
+            currencyOld.setCharCode(new String(ch, start, length));
         } else if (nominalTag){
-            currency.setNominal(Integer.parseInt(new String(ch, start, length)));
+            currencyOld.setNominal(Integer.parseInt(new String(ch, start, length)));
         } else if (valueTag){
             String s = new String(ch, start, length);
-            currency.setValue(Double.parseDouble(s.replace(',', '.')));
+            currencyOld.setValue(Double.parseDouble(s.replace(',', '.')));
         } else if (nameTag){
-            currency.setName(new String(ch, start, length));
+            currencyOld.setName(new String(ch, start, length));
         }
     }
 
@@ -71,7 +71,7 @@ public class SAXHandler extends DefaultHandler {
         currencies.remove(currencies.size() - 1);
     }
 
-    public ArrayList<Currency> getCurrencies(){
+    public ArrayList<CurrencyOld> getCurrencies(){
         return currencies;
     }
 }

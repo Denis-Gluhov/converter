@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import ru.sbertech.currencyconvert.model.Currency;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 
 public interface IView {
-    void refreshData(@NonNull List<Currency> data);
+    void refreshData(@NonNull List<CurrencyOld> data);
 }

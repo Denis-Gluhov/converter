@@ -11,11 +11,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.model.Currency;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 
 public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapter.CurrencyViewHolder> {
 
-    private List<Currency> data;
+    private List<CurrencyOld> data;
     private LayoutInflater inflater;
 
     public CurrencyListAdapter(Context context) {
@@ -28,15 +28,15 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
         return new CurrencyViewHolder(view);
     }
 
-    public void setData(List<Currency> data) {
+    public void setData(List<CurrencyOld> data) {
         this.data = data;
     }
 
     @Override
     public void onBindViewHolder(CurrencyViewHolder holder, int position) {
-        Currency currency = data.get(position);
-        holder.name.setText(currency.getName());
-        holder.fullText.setText(currency.getNominal() + " " + currency.getCharCode() + " = " + currency.getValue() + " руб.");
+        CurrencyOld currencyOld = data.get(position);
+        holder.name.setText(currencyOld.getName());
+        holder.fullText.setText(currencyOld.getNominal() + " " + currencyOld.getCharCode() + " = " + currencyOld.getValue() + " руб.");
     }
 
     @Override

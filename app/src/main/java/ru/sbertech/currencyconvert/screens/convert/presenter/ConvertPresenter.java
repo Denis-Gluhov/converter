@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-import ru.sbertech.currencyconvert.model.Currency;
-import ru.sbertech.currencyconvert.model.repository.ContractRepository;
-import ru.sbertech.currencyconvert.model.repository.Database;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 import ru.sbertech.currencyconvert.screens.convert.view.IConvertView;
 
 public class ConvertPresenter implements IConvertPresenter {
@@ -14,7 +12,7 @@ public class ConvertPresenter implements IConvertPresenter {
     private IConvertView convertView;
     private ContractRepository.Database databaseModule;
 
-    private List<Currency> data;
+    private List<CurrencyOld> data;
 
     private double baseValue;
     private double finalValue;

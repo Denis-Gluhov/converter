@@ -12,11 +12,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.model.Currency;
+import ru.sbertech.currencyconvert.model.CurrencyOld;
 
-public class CustomSpinnerAdapter extends ArrayAdapter<Currency> {
+public class CustomSpinnerAdapter extends ArrayAdapter<CurrencyOld> {
 
-    private List<Currency> data;
+    private List<CurrencyOld> data;
     private Activity activity;
 
     public CustomSpinnerAdapter(Activity activity) {
@@ -32,34 +32,34 @@ public class CustomSpinnerAdapter extends ArrayAdapter<Currency> {
             return data.size();
     }
 
-    public void setData(List<Currency> data) {
+    public void setData(List<CurrencyOld> data) {
         this.data = data;
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        final Currency currency = data.get(position);
+        final CurrencyOld currencyOld = data.get(position);
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = activity.getLayoutInflater();
             view = inflater.inflate(R.layout.custom_dropdown_item, null);
         }
         TextView textView = (TextView) view.findViewById(R.id.dropdown_item);
-        textView.setText(currency.getName());
+        textView.setText(currencyOld.getName());
         return view;
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        final Currency currency = data.get(position);
+        final CurrencyOld currencyOld = data.get(position);
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = activity.getLayoutInflater();
             view = inflater.inflate(R.layout.custom_dropdown_item, null);
         }
         TextView textView = (TextView) view.findViewById(R.id.dropdown_item);
-        textView.setText(currency.getName());
+        textView.setText(currencyOld.getName());
         return view;
     }
 }
