@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.screens.convert.view;
+package ru.sbertech.currencyconvert.convert_valute;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,20 +18,16 @@ import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
 import ru.sbertech.currencyconvert.TabFragment;
-import ru.sbertech.currencyconvert.model.CurrencyOld;
-import ru.sbertech.currencyconvert.screens.convert.presenter.ConvertPresenter;
-import ru.sbertech.currencyconvert.screens.convert.presenter.IConvertPresenter;
 
-public class ConvertView extends TabFragment implements IConvertView {
+public class ConvertFragment extends TabFragment implements ConvertContract.View {
 
     private CustomSpinnerAdapter adapter;
-    private IConvertPresenter presenter;
     private EditText editText;
     private TextView textView;
 
-    public static ConvertView getInstance(Context context){
+    public static ConvertFragment getInstance(Context context){
         Bundle bundle = new Bundle();
-        ConvertView fragment = new ConvertView();
+        ConvertFragment fragment = new ConvertFragment();
         fragment.setArguments(bundle);
         fragment.setTitle(context.getString(R.string.text_converter));
         return fragment;

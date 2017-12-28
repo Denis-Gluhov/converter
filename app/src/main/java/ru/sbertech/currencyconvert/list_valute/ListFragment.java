@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.screens.list.view;
+package ru.sbertech.currencyconvert.list_valute;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,20 +16,17 @@ import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
 import ru.sbertech.currencyconvert.TabFragment;
-import ru.sbertech.currencyconvert.model.CurrencyOld;
-import ru.sbertech.currencyconvert.screens.list.presenter.IListPresenter;
-import ru.sbertech.currencyconvert.screens.list.presenter.ListPresenter;
 
-public class ListView extends TabFragment implements IListView {
+public class ListFragment extends TabFragment implements IListView {
 
     private CurrencyListAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private IListPresenter presenter;
     private ProgressDialog progressDialog;
 
-    public static ListView getInstance(Context context){
+    public static ListFragment getInstance(Context context){
         Bundle bundle = new Bundle();
-        ListView fragment = new ListView();
+        ListFragment fragment = new ListFragment();
         fragment.setArguments(bundle);
         fragment.setTitle(context.getString(R.string.text_currency));
         return fragment;

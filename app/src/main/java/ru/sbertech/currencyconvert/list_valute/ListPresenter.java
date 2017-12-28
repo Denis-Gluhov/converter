@@ -1,13 +1,8 @@
-package ru.sbertech.currencyconvert.screens.list.presenter;
+package ru.sbertech.currencyconvert.list_valute;
 
 import android.support.annotation.NonNull;
 
 import java.util.List;
-
-import ru.sbertech.currencyconvert.model.CurrencyOld;
-import ru.sbertech.currencyconvert.screens.list.interactor.IListInteractor;
-import ru.sbertech.currencyconvert.screens.list.interactor.ListInteractor;
-import ru.sbertech.currencyconvert.screens.list.view.IListView;
 
 public class ListPresenter implements IListPresenter {
 

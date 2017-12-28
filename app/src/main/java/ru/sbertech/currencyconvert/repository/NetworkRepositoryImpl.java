@@ -9,6 +9,8 @@ import ru.sbertech.currencyconvert.model.Valute;
 
 public class NetworkRepositoryImpl implements NetworkRepository {
 
+    public static final String BASE_URL = "http://www.cbr.ru/";
+
     @NonNull
     private NetworkService service;
 

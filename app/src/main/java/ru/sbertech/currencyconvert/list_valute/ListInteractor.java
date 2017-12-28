@@ -1,9 +1,6 @@
-package ru.sbertech.currencyconvert.screens.list.interactor;
+package ru.sbertech.currencyconvert.list_valute;
 
 import java.util.List;
-
-import ru.sbertech.currencyconvert.model.CurrencyOld;
-import ru.sbertech.currencyconvert.screens.list.presenter.IListPresenter;
 
 public class ListInteractor implements IListInteractor, ContractRepository.OnLoadDataListener {
 

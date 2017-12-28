@@ -8,14 +8,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.sbertech.currencyconvert.screens.convert.view.ConvertView;
-import ru.sbertech.currencyconvert.screens.list.view.ListView;
+import ru.sbertech.currencyconvert.convert_valute.ConvertFragment;
+import ru.sbertech.currencyconvert.list_valute.ListFragment;
 
 public class TabFragmentAdapter extends FragmentPagerAdapter {
 
     private List<TabFragment> tab;
-    private ListView listView;
-    private ConvertView convertView;
+    private ListFragment listFragment;
+    private ConvertFragment convertFragment;
 
     public TabFragmentAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -24,10 +24,10 @@ public class TabFragmentAdapter extends FragmentPagerAdapter {
 
     private void initTabs(Context context) {
         tab = new ArrayList<>(2);
-        listView = ListView.getInstance(context);
-        tab.add(listView);
-        convertView = ConvertView.getInstance(context);
-        tab.add(convertView);
+        listFragment = ListFragment.getInstance(context);
+        tab.add(listFragment);
+        convertFragment = ConvertFragment.getInstance(context);
+        tab.add(convertFragment);
     }
 
     @Override

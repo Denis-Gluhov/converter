@@ -1,14 +1,7 @@
-package ru.sbertech.currencyconvert.screens.convert.presenter;
+package ru.sbertech.currencyconvert.convert_valute;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
-import ru.sbertech.currencyconvert.model.CurrencyOld;
-import ru.sbertech.currencyconvert.screens.convert.view.IConvertView;
-
-public class ConvertPresenter implements IConvertPresenter {
-
+public class ConvertPresenter {
+/*
     private IConvertView convertView;
     private ContractRepository.Database databaseModule;
 
@@ -46,4 +39,5 @@ public class ConvertPresenter implements IConvertPresenter {
         else
             convertView.showMessage("Error!");
     }
+*/
 }

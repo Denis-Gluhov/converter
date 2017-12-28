@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.screens.list.view;
+package ru.sbertech.currencyconvert.list_valute;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.model.CurrencyOld;
 
 public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapter.CurrencyViewHolder> {
 
