@@ -14,14 +14,19 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import ru.sbertech.currencyconvert.App;
 import ru.sbertech.currencyconvert.R;
 import ru.sbertech.currencyconvert.TabFragment;
+import ru.sbertech.currencyconvert.model.Valute;
 
-public class ListFragment extends TabFragment implements IListView {
+public class ListFragment extends TabFragment implements ListContract.View {
 
-    private CurrencyListAdapter adapter;
+    @Inject
+    ListContract.Presenter presenter;
+
     private SwipeRefreshLayout swipeRefreshLayout;
-    private IListPresenter presenter;
     private ProgressDialog progressDialog;
 
     public static ListFragment getInstance(Context context){
@@ -36,7 +41,6 @@ public class ListFragment extends TabFragment implements IListView {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-
     }
 
     @Nullable
@@ -45,18 +49,22 @@ public class ListFragment extends TabFragment implements IListView {
         view = inflater.inflate(R.layout.fragment_list_currency, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_list_currency);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new CurrencyListAdapter(getActivity());
+        CurrencyListAdapter adapter = new CurrencyListAdapter(getActivity());
         recyclerView.setAdapter(adapter);
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_list);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                presenter.onRefreshData();
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            presenter.onRefreshData();
         });
-        presenter = new ListPresenter(this);
+
+        setupFragmentComponent();
+
+        presenter.onLoadData();
         return view;
+    }
+
+    private void setupFragmentComponent() {
+        App.getInstance().initListFragmentComponent(this).inject(this);
     }
 
     @Override
@@ -80,8 +88,7 @@ public class ListFragment extends TabFragment implements IListView {
     }
 
     @Override
-    public void refreshData(@NonNull List<CurrencyOld> data) {
-        adapter.setData(data);
-        adapter.notifyDataSetChanged();
+    public void refreshData(@NonNull List<Valute> data) {
+
     }
 }

@@ -2,20 +2,29 @@ package ru.sbertech.currencyconvert.model;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Text;
+import org.simpleframework.xml.strategy.Type;
 
-@Root(name = "Valute")
+@Root(name = "Valute", strict = false)
 public class Valute {
 
-    @Element(name = "NumCode")
+    @Element(required = false, name = "NumCode")
     private String numCode;
-    @Element(name = "CharCode")
+
+    @Element(required = false, name = "CharCode")
     private String charCode;
-    @Element(name = "Nominal")
+
+    @Element(required = false, name = "Nominal")
     private int nominal;
-    @Element(name = "Name")
+
+    @Element(required = false, name = "Name")
     private String name;
-    @Element(name = "Value")
-    private double value;
+
+    @Element(required = true, name = "Value", type = Double.class)
+    private Double value;
+
+    public Valute() {
+    }
 
     public String getNumCode() {
         return numCode;
@@ -25,13 +34,13 @@ public class Valute {
         this.numCode = numCode;
     }
 
-    public String getCharCode() {
-        return charCode;
-    }
-
-    public void setCharCode(String charCode) {
-        this.charCode = charCode;
-    }
+//    public String getCharCode() {
+//        return charCode;
+//    }
+//
+//    public void setCharCode(String charCode) {
+//        this.charCode = charCode;
+//    }
 
     public int getNominal() {
         return nominal;
@@ -41,19 +50,19 @@ public class Valute {
         this.nominal = nominal;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 }

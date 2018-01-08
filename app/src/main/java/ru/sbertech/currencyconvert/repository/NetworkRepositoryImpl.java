@@ -2,10 +2,8 @@ package ru.sbertech.currencyconvert.repository;
 
 import android.support.annotation.NonNull;
 
-import java.util.List;
-
-import io.reactivex.Observable;
-import ru.sbertech.currencyconvert.model.Valute;
+import ru.sbertech.currencyconvert.model.ValCurs;
+import rx.Observable;
 
 public class NetworkRepositoryImpl implements NetworkRepository {
 
@@ -19,7 +17,7 @@ public class NetworkRepositoryImpl implements NetworkRepository {
     }
 
     @Override
-    public Observable<List<Valute>> getValute() {
+    public Observable<ValCurs> getValute() {
         return service.getValute();
     }
 }

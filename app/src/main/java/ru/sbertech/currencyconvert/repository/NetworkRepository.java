@@ -1,10 +1,8 @@
 package ru.sbertech.currencyconvert.repository;
 
-import java.util.List;
-
-import io.reactivex.Observable;
-import ru.sbertech.currencyconvert.model.Valute;
+import ru.sbertech.currencyconvert.model.ValCurs;
+import rx.Observable;
 
 public interface NetworkRepository {
-    Observable<List<Valute>> getValute();
+    Observable<ValCurs> getValute();
 }

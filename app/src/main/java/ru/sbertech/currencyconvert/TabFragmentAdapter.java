@@ -14,19 +14,17 @@ import ru.sbertech.currencyconvert.list_valute.ListFragment;
 public class TabFragmentAdapter extends FragmentPagerAdapter {
 
     private List<TabFragment> tab;
-    private ListFragment listFragment;
-    private ConvertFragment convertFragment;
 
-    public TabFragmentAdapter(Context context, FragmentManager fm) {
+    TabFragmentAdapter(Context context, FragmentManager fm) {
         super(fm);
         initTabs(context);
     }
 
     private void initTabs(Context context) {
         tab = new ArrayList<>(2);
-        listFragment = ListFragment.getInstance(context);
+        ListFragment listFragment = ListFragment.getInstance(context);
         tab.add(listFragment);
-        convertFragment = ConvertFragment.getInstance(context);
+        ConvertFragment convertFragment = ConvertFragment.getInstance(context);
         tab.add(convertFragment);
     }
 

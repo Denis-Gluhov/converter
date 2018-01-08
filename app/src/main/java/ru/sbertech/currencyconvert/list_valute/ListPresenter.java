@@ -4,26 +4,42 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-public class ListPresenter implements IListPresenter {
+import javax.inject.Inject;
 
-    private IListView listView;
-    private IListInteractor listInteractor;
+import ru.sbertech.currencyconvert.model.ValCurs;
+import ru.sbertech.currencyconvert.model.Valute;
 
-    public ListPresenter(IListView listView) {
-        this.listView = listView;
-        listInteractor = new ListInteractor(this);
-        listView.showProgressDialog();
-        listInteractor.loadData();
+public class ListPresenter implements ListContract.Presenter, ListContract.Interactor.OnLoadDataListener {
+
+    @NonNull
+    private final ListContract.View view;
+    @NonNull
+    private final ListContract.Interactor interactor;
+
+    @Inject
+    ListPresenter(@NonNull ListContract.View view,
+                  @NonNull ListContract.Interactor interactor) {
+        this.view = view;
+        this.interactor = interactor;
     }
 
     @Override
-    public void setData(@NonNull List<CurrencyOld> data) {
-        listView.dismissProgressDialog();
-        listView.dismissRefreshing();
-        listView.refreshData(data);
+    public void onLoadData() {
+        interactor.loadData(this);
     }
 
+    @Override
     public void onRefreshData() {
-        listInteractor.loadData();
+
+    }
+
+    @Override
+    public void onSuccess(@NonNull ValCurs response) {
+        List<Valute> valutes = response.getValutes();
+    }
+
+    @Override
+    public void onFailed(@NonNull Throwable throwable) {
+        Throwable throwable1 = throwable;
     }
 }

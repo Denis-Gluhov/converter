@@ -18,6 +18,7 @@ import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
 import ru.sbertech.currencyconvert.TabFragment;
+import ru.sbertech.currencyconvert.model.Valute;
 
 public class ConvertFragment extends TabFragment implements ConvertContract.View {
 
@@ -39,7 +40,7 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
         view = inflater.inflate(R.layout.fragment_convert_currency, container, false);
         adapter = new CustomSpinnerAdapter(getActivity());
 
-        presenter = new ConvertPresenter(this);
+//        presenter = new ConvertPresenter(this);
 
         initSpinner();
 
@@ -49,7 +50,7 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setValueBaseCurrency(editText.getText().toString());
+//                presenter.setValueBaseCurrency(editText.getText().toString());
             }
         });
         return view;
@@ -66,7 +67,7 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
         sourceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                presenter.setBaseCurrency(position);
+//                presenter.setBaseCurrency(position);
             }
 
             @Override
@@ -80,7 +81,7 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
         finalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                presenter.setFinalCurrency(position);
+//                presenter.setFinalCurrency(position);
             }
 
             @Override
@@ -101,10 +102,15 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
     }
 
     @Override
-    public void refreshData(@NonNull List<CurrencyOld> data) {
-        adapter.setData(data);
-        adapter.notifyDataSetChanged();
+    public void refreshData(@NonNull List<Valute> data) {
+
     }
+
+    //    @Override
+//    public void refreshData(@NonNull List<CurrencyOld> data) {
+//        adapter.setData(data);
+//        adapter.notifyDataSetChanged();
+//    }
 
     @Override
     public void setResult(String value) {

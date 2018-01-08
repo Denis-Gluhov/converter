@@ -46,7 +46,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<Valute> {
             view = inflater.inflate(R.layout.custom_dropdown_item, null);
         }
         TextView textView = (TextView) view.findViewById(R.id.dropdown_item);
-        textView.setText(currencyOld.getName());
+//        textView.setText(currencyOld.getName());
         return view;
     }
 
@@ -59,7 +59,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<Valute> {
             view = inflater.inflate(R.layout.custom_dropdown_item, null);
         }
         TextView textView = (TextView) view.findViewById(R.id.dropdown_item);
-        textView.setText(currencyOld.getName());
+//        textView.setText(currencyOld.getName());
         return view;
     }
 }

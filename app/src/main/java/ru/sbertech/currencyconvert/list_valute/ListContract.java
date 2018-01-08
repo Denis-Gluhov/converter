@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
+import ru.sbertech.currencyconvert.model.ValCurs;
 import ru.sbertech.currencyconvert.model.Valute;
 
 public interface ListContract {
@@ -16,11 +17,16 @@ public interface ListContract {
     }
 
     interface Presenter {
-        void setData(@NonNull List<Valute> data);
+        void onLoadData();
         void onRefreshData();
     }
 
     interface Interactor {
-        void loadData();
+        void loadData(@NonNull OnLoadDataListener listener);
+
+        interface OnLoadDataListener {
+            void onSuccess(@NonNull ValCurs response);
+            void onFailed(@NonNull Throwable throwable);
+        }
     }
 }
