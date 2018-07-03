@@ -61,6 +61,11 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    protected void setupFragmentComponent() {
+
+    }
+
     private void initSpinner() {
         Spinner sourceSpinner = (Spinner) view.findViewById(R.id.source_spinner);
         sourceSpinner.setAdapter(adapter);
@@ -107,7 +112,7 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
     }
 
     //    @Override
-//    public void refreshData(@NonNull List<CurrencyOld> data) {
+//    public void setData(@NonNull List<CurrencyOld> data) {
 //        adapter.setData(data);
 //        adapter.notifyDataSetChanged();
 //    }

@@ -10,15 +10,12 @@ import ru.sbertech.currencyconvert.model.Valute;
 public interface ListContract {
 
     interface View {
-        void showProgressDialog();
-        void dismissProgressDialog();
         void dismissRefreshing();
-        void refreshData(@NonNull List<Valute> data);
+        void setData(@NonNull List<Valute> data);
     }
 
     interface Presenter {
-        void onLoadData();
-        void onRefreshData();
+        void loadData();
     }
 
     interface Interactor {

@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import dagger.Module;
 import dagger.Provides;
-import ru.sbertech.currencyconvert.repository.NetworkRepository;
 
 @Module
 public class ListFragmentModule {
@@ -26,7 +25,7 @@ public class ListFragmentModule {
     @NonNull
     @ListFragmentScope
     @Provides
-    ListContract.Interactor provideInteractor(@NonNull NetworkRepository networkRepository) {
+    ListContract.Interactor provideInteractor(@NonNull Network networkRepository) {
         return new ListInteractor(networkRepository);
     }
 

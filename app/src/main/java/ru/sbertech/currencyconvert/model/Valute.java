@@ -1,9 +1,17 @@
 package ru.sbertech.currencyconvert.model;
 
+import android.util.Xml;
+
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
-import org.simpleframework.xml.Text;
-import org.simpleframework.xml.strategy.Type;
+
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
+import okio.Utf8;
 
 @Root(name = "Valute", strict = false)
 public class Valute {
@@ -15,54 +23,24 @@ public class Valute {
     private String charCode;
 
     @Element(required = false, name = "Nominal")
-    private int nominal;
+    private String nominal;
 
     @Element(required = false, name = "Name")
     private String name;
 
-    @Element(required = true, name = "Value", type = Double.class)
-    private Double value;
+    @Element(required = true, name = "Value")
+    private String value;
 
-    public Valute() {
-    }
+    public String getName() {
 
-    public String getNumCode() {
-        return numCode;
-    }
 
-    public void setNumCode(String numCode) {
-        this.numCode = numCode;
-    }
+        try {
+            return new String(name.getBytes("UTF-8"), "cp1251");
+        } catch (UnsupportedEncodingException e) {
+            return name;
+        }
 
-//    public String getCharCode() {
-//        return charCode;
-//    }
-//
-//    public void setCharCode(String charCode) {
-//        this.charCode = charCode;
-//    }
 
-    public int getNominal() {
-        return nominal;
-    }
-
-    public void setNominal(int nominal) {
-        this.nominal = nominal;
-    }
-
-//    public String getName() {
 //        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
     }
 }

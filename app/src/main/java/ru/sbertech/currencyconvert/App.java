@@ -3,10 +3,10 @@ package ru.sbertech.currencyconvert;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
-import ru.sbertech.currencyconvert.dagger.AppComponent;
-import ru.sbertech.currencyconvert.dagger.AppModule;
-import ru.sbertech.currencyconvert.dagger.DaggerAppComponent;
-import ru.sbertech.currencyconvert.dagger.NetworkModule;
+import ru.sbertech.currencyconvert.di.AppComponent;
+import ru.sbertech.currencyconvert.di.AppModule;
+import ru.sbertech.currencyconvert.di.DaggerAppComponent;
+import ru.sbertech.currencyconvert.di.NetworkModule;
 import ru.sbertech.currencyconvert.list_valute.ListFragment;
 import ru.sbertech.currencyconvert.list_valute.ListFragmentComponent;
 import ru.sbertech.currencyconvert.list_valute.ListFragmentModule;

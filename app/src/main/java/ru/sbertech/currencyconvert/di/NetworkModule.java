@@ -1,39 +1,30 @@
-package ru.sbertech.currencyconvert.dagger;
+package ru.sbertech.currencyconvert.di;
 
 import android.support.annotation.NonNull;
 
-import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
-import ru.sbertech.currencyconvert.repository.NetworkRepository;
-import ru.sbertech.currencyconvert.repository.NetworkRepositoryImpl;
-import ru.sbertech.currencyconvert.repository.NetworkService;
+import ru.sbertech.currencyconvert.api.ApiService;
 
 @Module
 public class NetworkModule {
 
-    @NonNull
-    @Singleton
-    @Provides
-    NetworkRepository provideNetworkRepository(@NonNull NetworkService service) {
-        return new NetworkRepositoryImpl(service);
-    }
+    private static final String BASE_URL = "http://www.cbr.ru/";
 
     @NonNull
     @Singleton
     @Provides
-    NetworkService provideNetworkService(@NonNull Retrofit retrofit) {
-        return retrofit.create(NetworkService.class);
+    ApiService provideNetworkService(@NonNull Retrofit retrofit) {
+        return retrofit.create(ApiService.class);
     }
 
     @NonNull
@@ -41,7 +32,7 @@ public class NetworkModule {
     @Provides
     Retrofit provideRetrofit(@NonNull OkHttpClient client) {
         return new Retrofit.Builder()
-                .baseUrl(NetworkRepositoryImpl.BASE_URL)
+                .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(SimpleXmlConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -54,11 +45,12 @@ public class NetworkModule {
     OkHttpClient provideClient() {
         return new OkHttpClient.Builder()
                 .addInterceptor(chain -> {
-                    Request request = chain.request()
-                            .newBuilder()
-                            .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=WINDOWS-1251")
+                    Response response = chain.proceed(chain.request());
+                    InputStreamReader inputStreamReader = new InputStreamReader(response.body().byteStream(),
+                            "ISO-8859-1");
+                    response.newBuilder()
                             .build();
-                    return chain.proceed(request);
+                    return response;
                 })
                 .build();
     }

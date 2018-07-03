@@ -24,18 +24,14 @@ public class ListPresenter implements ListContract.Presenter, ListContract.Inter
     }
 
     @Override
-    public void onLoadData() {
+    public void loadData() {
         interactor.loadData(this);
     }
 
     @Override
-    public void onRefreshData() {
-
-    }
-
-    @Override
     public void onSuccess(@NonNull ValCurs response) {
-        List<Valute> valutes = response.getValutes();
+        view.dismissRefreshing();
+        view.setData(response.getValutes());
     }
 
     @Override

@@ -1,6 +1,5 @@
 package ru.sbertech.currencyconvert.list_valute;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,7 +26,7 @@ public class ListFragment extends TabFragment implements ListContract.View {
     ListContract.Presenter presenter;
 
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ProgressDialog progressDialog;
+    private CurrencyListAdapter adapter;
 
     public static ListFragment getInstance(Context context){
         Bundle bundle = new Bundle();
@@ -37,33 +36,22 @@ public class ListFragment extends TabFragment implements ListContract.View {
         return fragment;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list_currency, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_list_currency);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CurrencyListAdapter adapter = new CurrencyListAdapter(getActivity());
+        adapter = new CurrencyListAdapter(getActivity());
         recyclerView.setAdapter(adapter);
-
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_list);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            presenter.onRefreshData();
-        });
-
-        setupFragmentComponent();
-
-        presenter.onLoadData();
+        swipeRefreshLayout.setOnRefreshListener(() -> presenter.loadData());
+        presenter.loadData();
         return view;
     }
 
-    private void setupFragmentComponent() {
+    @Override
+    protected void setupFragmentComponent() {
         App.getInstance().initListFragmentComponent(this).inject(this);
     }
 
@@ -74,21 +62,8 @@ public class ListFragment extends TabFragment implements ListContract.View {
     }
 
     @Override
-    public void showProgressDialog() {
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage(getActivity().getString(R.string.text_dialog_load));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
-
-    @Override
-    public void dismissProgressDialog() {
-        if (progressDialog != null)
-            progressDialog.dismiss();
-    }
-
-    @Override
-    public void refreshData(@NonNull List<Valute> data) {
-
+    public void setData(@NonNull List<Valute> data) {
+        adapter.setData(data);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.dagger;
+package ru.sbertech.currencyconvert.di;
 
 import android.support.annotation.NonNull;
 

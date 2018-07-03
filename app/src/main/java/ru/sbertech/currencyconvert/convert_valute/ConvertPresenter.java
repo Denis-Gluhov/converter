@@ -14,7 +14,7 @@ public class ConvertPresenter {
         this.convertView = convertView;
         databaseModule = new Database();
         data = databaseModule.getAll();
-        convertView.refreshData(data);
+        convertView.setData(data);
     }
 
     private double round(double value) {
