@@ -13,7 +13,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
-import ru.sbertech.currencyconvert.api.ApiService;
+import ru.sbertech.currencyconvert.network.ApiService;
 
 @Module
 public class NetworkModule {

@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert;
+package ru.sbertech.currencyconvert.ui;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.sbertech.currencyconvert.convert_valute.ConvertFragment;
-import ru.sbertech.currencyconvert.list_valute.ListFragment;
+import ru.sbertech.currencyconvert.ui.convert_valute.ConvertFragment;
+import ru.sbertech.currencyconvert.ui.list_valute.ListFragment;
 
 public class TabFragmentAdapter extends FragmentPagerAdapter {
 

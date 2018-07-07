@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.convert_valute;
+package ru.sbertech.currencyconvert.ui.convert_valute;
 
 /**
  * Created by Developer on 12/28/2017.

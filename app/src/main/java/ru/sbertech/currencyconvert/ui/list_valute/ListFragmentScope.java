@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.list_valute;
+package ru.sbertech.currencyconvert.ui.list_valute;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.convert_valute;
+package ru.sbertech.currencyconvert.ui.convert_valute;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.TabFragment;
+import ru.sbertech.currencyconvert.ui.TabFragment;
 import ru.sbertech.currencyconvert.model.Valute;
 
 public class ConvertFragment extends TabFragment implements ConvertContract.View {

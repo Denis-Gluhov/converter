@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.list_valute;
+package ru.sbertech.currencyconvert.ui.list_valute;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 import ru.sbertech.currencyconvert.App;
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.TabFragment;
+import ru.sbertech.currencyconvert.ui.TabFragment;
 import ru.sbertech.currencyconvert.model.Valute;
 
 public class ListFragment extends TabFragment implements ListContract.View {

@@ -9,11 +9,11 @@ import java.util.List;
 @Root(strict = false)
 public class ValCurs {
 
-    @Attribute(name = "Date")
-    private String date;
-
     @Attribute(name = "name")
     private String name;
+
+    @Attribute(name = "Date")
+    private String date;
 
     @ElementList(required = false, name = "Valute", inline = true)
     private List<Valute> valutes;

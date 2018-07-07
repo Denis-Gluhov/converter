@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert;
+package ru.sbertech.currencyconvert.ui;
 
 import android.content.Context;
 import android.os.Bundle;

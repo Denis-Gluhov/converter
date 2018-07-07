@@ -1,13 +1,10 @@
-package ru.sbertech.currencyconvert.list_valute;
+package ru.sbertech.currencyconvert.ui.list_valute;
 
 import android.support.annotation.NonNull;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import ru.sbertech.currencyconvert.model.ValCurs;
-import ru.sbertech.currencyconvert.model.Valute;
 
 public class ListPresenter implements ListContract.Presenter, ListContract.Interactor.OnLoadDataListener {
 
