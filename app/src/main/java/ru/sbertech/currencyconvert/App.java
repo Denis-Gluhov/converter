@@ -1,15 +1,12 @@
 package ru.sbertech.currencyconvert;
 
 import android.app.Application;
-import android.support.annotation.NonNull;
 
 import ru.sbertech.currencyconvert.di.AppComponent;
 import ru.sbertech.currencyconvert.di.AppModule;
 import ru.sbertech.currencyconvert.di.DaggerAppComponent;
 import ru.sbertech.currencyconvert.di.NetworkModule;
-import ru.sbertech.currencyconvert.ui.list_valute.ListFragment;
-import ru.sbertech.currencyconvert.ui.list_valute.ListFragmentComponent;
-import ru.sbertech.currencyconvert.ui.list_valute.ListFragmentModule;
+import ru.sbertech.currencyconvert.di.ValutesComponent;
 
 public class App extends Application {
 
@@ -20,7 +17,7 @@ public class App extends Application {
     }
 
     private AppComponent appComponent;
-    private ListFragmentComponent listFragmentComponent;
+    private ValutesComponent valutesComponent;
 
     @Override
     public void onCreate() {
@@ -36,8 +33,13 @@ public class App extends Application {
                 .build();
     }
 
-    public ListFragmentComponent initListFragmentComponent(@NonNull ListFragment listFragment) {
-        listFragmentComponent = appComponent.listFragmentComponent(new ListFragmentModule(listFragment));
-        return listFragmentComponent;
+    public ValutesComponent plusValutesComponent() {
+        if (valutesComponent == null)
+            valutesComponent = appComponent.plusValutesComponent();
+        return valutesComponent;
+    }
+
+    public void clearValutesComponent() {
+        valutesComponent = null;
     }
 }

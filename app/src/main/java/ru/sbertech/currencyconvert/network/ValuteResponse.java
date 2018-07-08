@@ -1,30 +1,30 @@
-package ru.sbertech.currencyconvert.database;
+package ru.sbertech.currencyconvert.network;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
-@Entity
-public class Valute {
+import java.io.UnsupportedEncodingException;
 
-    @NonNull
-    @PrimaryKey
+@Root(name = "Valute", strict = false)
+public class ValuteResponse {
+
+    @Element(required = false, name = "NumCode")
     private String numCode;
 
+    @Element(required = false, name = "CharCode")
     private String charCode;
 
+    @Element(required = false, name = "Nominal")
     private String nominal;
 
+    @Element(required = false, name = "Name")
     private String name;
 
+    @Element(required = true, name = "Value")
     private String value;
 
-    public Valute(@NonNull String numCode, String charCode, String nominal, String name, String value) {
-        this.numCode = numCode;
-        this.charCode = charCode;
-        this.nominal = nominal;
-        this.name = name;
-        this.value = value;
+    public String getName() {
+        return name;
     }
 
     public String getNumCode() {
@@ -49,10 +49,6 @@ public class Valute {
 
     public void setNominal(String nominal) {
         this.nominal = nominal;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {

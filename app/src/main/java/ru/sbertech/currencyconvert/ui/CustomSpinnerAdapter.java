@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.ui.convert_valute;
+package ru.sbertech.currencyconvert.ui;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -12,11 +12,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.model.Valute;
+import ru.sbertech.currencyconvert.network.ValuteResponse;
 
-public class CustomSpinnerAdapter extends ArrayAdapter<Valute> {
+public class CustomSpinnerAdapter extends ArrayAdapter<ValuteResponse> {
 
-    private List<Valute> data;
+    private List<ValuteResponse> data;
     private Activity activity;
 
     public CustomSpinnerAdapter(Activity activity) {
@@ -32,14 +32,14 @@ public class CustomSpinnerAdapter extends ArrayAdapter<Valute> {
             return data.size();
     }
 
-    public void setData(List<Valute> data) {
+    public void setData(List<ValuteResponse> data) {
         this.data = data;
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        final Valute currencyOld = data.get(position);
+        final ValuteResponse currencyOld = data.get(position);
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = activity.getLayoutInflater();
@@ -52,7 +52,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<Valute> {
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        final Valute currencyOld = data.get(position);
+        final ValuteResponse currencyOld = data.get(position);
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = activity.getLayoutInflater();

@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.ui.list_valute;
+package ru.sbertech.currencyconvert.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -7,5 +7,5 @@ import javax.inject.Scope;
 
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-@interface ListFragmentScope {
+public @interface ValutesScope {
 }

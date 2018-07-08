@@ -1,5 +1,7 @@
 package ru.sbertech.currencyconvert.ui;
 
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -9,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 
 import ru.sbertech.currencyconvert.R;
 
-public class MainActivity extends AppCompatActivity {
+public class ValutesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,15 +22,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initTabs() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        TabFragmentAdapter adapter = new TabFragmentAdapter(MainActivity.this, getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        TabFragmentAdapter adapter = new TabFragmentAdapter(ValutesActivity.this, getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
     }
 
     private void initToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
     }
 }

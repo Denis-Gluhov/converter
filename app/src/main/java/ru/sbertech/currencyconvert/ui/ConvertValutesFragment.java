@@ -1,10 +1,8 @@
-package ru.sbertech.currencyconvert.ui.convert_valute;
+package ru.sbertech.currencyconvert.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +12,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.List;
-
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.ui.TabFragment;
-import ru.sbertech.currencyconvert.model.Valute;
 
-public class ConvertFragment extends TabFragment implements ConvertContract.View {
+public class ConvertValutesFragment extends TabFragment {
 
     private CustomSpinnerAdapter adapter;
     private EditText editText;
     private TextView textView;
 
-    public static ConvertFragment getInstance(Context context){
+    public static ConvertValutesFragment getInstance(Context context){
         Bundle bundle = new Bundle();
-        ConvertFragment fragment = new ConvertFragment();
+        ConvertValutesFragment fragment = new ConvertValutesFragment();
         fragment.setArguments(bundle);
         fragment.setTitle(context.getString(R.string.text_converter));
         return fragment;
@@ -40,17 +34,15 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
         view = inflater.inflate(R.layout.fragment_convert_currency, container, false);
         adapter = new CustomSpinnerAdapter(getActivity());
 
-//        presenter = new ConvertPresenter(this);
-
         initSpinner();
 
-        editText = (EditText) view.findViewById(R.id.source_edit);
-        textView = (TextView) view.findViewById(R.id.final_edit);
-        Button button = (Button) view.findViewById(R.id.btn_ok);
+        editText = view.findViewById(R.id.source_edit);
+        textView = view.findViewById(R.id.final_edit);
+        Button button = view.findViewById(R.id.btn_ok);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                presenter.setValueBaseCurrency(editText.getText().toString());
+
             }
         });
         return view;
@@ -67,12 +59,12 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
     }
 
     private void initSpinner() {
-        Spinner sourceSpinner = (Spinner) view.findViewById(R.id.source_spinner);
+        Spinner sourceSpinner = view.findViewById(R.id.source_spinner);
         sourceSpinner.setAdapter(adapter);
         sourceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                presenter.setBaseCurrency(position);
+
             }
 
             @Override
@@ -81,12 +73,12 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
             }
         });
 
-        Spinner finalSpinner = (Spinner) view.findViewById(R.id.final_spinner);
+        Spinner finalSpinner = view.findViewById(R.id.final_spinner);
         finalSpinner.setAdapter(adapter);
         finalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                presenter.setFinalCurrency(position);
+
             }
 
             @Override
@@ -94,31 +86,5 @@ public class ConvertFragment extends TabFragment implements ConvertContract.View
 
             }
         });
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-        AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                .setMessage(message)
-                .setPositiveButton(getActivity().getString(R.string.text_ok), null)
-                .setCancelable(false)
-                .create();
-        dialog.show();
-    }
-
-    @Override
-    public void refreshData(@NonNull List<Valute> data) {
-
-    }
-
-    //    @Override
-//    public void setData(@NonNull List<CurrencyOld> data) {
-//        adapter.setData(data);
-//        adapter.notifyDataSetChanged();
-//    }
-
-    @Override
-    public void setResult(String value) {
-        textView.setText(value);
     }
 }

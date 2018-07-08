@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.ui.list_valute;
+package ru.sbertech.currencyconvert.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,14 +11,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.sbertech.currencyconvert.R;
-import ru.sbertech.currencyconvert.model.Valute;
+import ru.sbertech.currencyconvert.repository.ValuteInfo;
 
-public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapter.CurrencyViewHolder> {
+public class ValutesListAdapter extends RecyclerView.Adapter<ValutesListAdapter.CurrencyViewHolder> {
 
-    private List<Valute> data;
+    private List<ValuteInfo> data;
     private LayoutInflater inflater;
 
-    CurrencyListAdapter(@NonNull Context context) {
+    ValutesListAdapter(@NonNull Context context) {
         inflater = LayoutInflater.from(context);
     }
 
@@ -28,15 +28,14 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
         return new CurrencyViewHolder(view);
     }
 
-    public void setData(@NonNull List<Valute> data) {
+    public void setData(@NonNull List<ValuteInfo> data) {
         this.data = data;
     }
 
     @Override
     public void onBindViewHolder(CurrencyViewHolder holder, int position) {
-        Valute valute = data.get(position);
+        ValuteInfo valute = data.get(position);
         holder.name.setText(valute.getName());
-//        holder.fullText.setText(valute.getNominal() + " " + valute.getCharCode() + " = " + valute.getValue() + " руб.");
     }
 
     @Override
@@ -48,14 +47,13 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
     }
 
     static class CurrencyViewHolder extends RecyclerView.ViewHolder{
-
-        TextView name;
-        TextView fullText;
+        final TextView name;
+        final TextView fullText;
 
         CurrencyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name_currency);
-            fullText = (TextView) itemView.findViewById(R.id.full_text);
+            name = itemView.findViewById(R.id.name_currency);
+            fullText = itemView.findViewById(R.id.full_text);
         }
     }
 }

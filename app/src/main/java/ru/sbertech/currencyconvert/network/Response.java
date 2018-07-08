@@ -1,4 +1,4 @@
-package ru.sbertech.currencyconvert.model;
+package ru.sbertech.currencyconvert.network;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
 import java.util.List;
 
 @Root(strict = false)
-public class ValCurs {
+public class Response {
 
     @Attribute(name = "name")
     private String name;
@@ -16,14 +16,14 @@ public class ValCurs {
     private String date;
 
     @ElementList(required = false, name = "Valute", inline = true)
-    private List<Valute> valutes;
+    private List<ValuteResponse> valuteResponses;
 
-    public List<Valute> getValutes() {
-        return valutes;
+    public List<ValuteResponse> getValuteResponses() {
+        return valuteResponses;
     }
 
-    public void setValutes(List<Valute> valutes) {
-        this.valutes = valutes;
+    public void setValuteResponses(List<ValuteResponse> valuteResponses) {
+        this.valuteResponses = valuteResponses;
     }
 
     public String getDate() {
